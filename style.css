@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header {
+  background: fuchsia;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 15px 15px 0;
+  width: 100%;
+}
+
+h1 {
+  color: #fff;
+  font-family: "Bubblegum Sans", sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.03em;
+  margin: 0 10px 15px 0;
+}
+
+#searchInput {
+  border-radius: 3px;
+  border: 0;
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding: 8px;
+  width: 240px;
+}
+
+/* source: https://css-tricks.com/seamless-responsive-photo-grid/ */
+#giphys {
+  -webkit-column-count: 5;
+  -webkit-column-gap: 0px;
+  -moz-column-count: 5;
+  -moz-column-gap: 0px;
+  column-count: 5;
+  column-gap: 4px;
+
+  /* Prevent vertical gaps */
+  line-height: 0;
+
+  margin-top: 116px;
+}
+
+#waiting {
+  color: #e4e4e4;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+#deleteBtn {
+  position: fixed;
+  background: lime;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 15px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: top 0.3s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 1;
+}
+
+#deleteBtn:hover {
+  cursor: pointer;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+#deleteBtn.show {
+  top: 160px;
+}
+
+#giphys img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+
+  margin: 2px 0;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+}
+
+#giphys img.destroy {
+  animation: destroy 0.5s;
+}
+
+@keyframes destroy {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.25);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Media Queries * * * * * * * * * * * * * * * * * * * * * * * */
+@media (min-width: 440px) {
+  #deleteBtn.show {
+    top: 110px;
+  }
+
+  #giphys {
+    margin-top: 68px;
+  }
+}
+
+@media (max-width: 1200px) {
+  #giphys {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1000px) {
+  #giphys {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  #giphys {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  #giphys {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
